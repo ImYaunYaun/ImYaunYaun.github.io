@@ -1,0 +1,515 @@
+/* Snav */
+
+
+/* S選單 */
+
+nav ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+/*主選單設定*/
+
+ul.main_menu li {
+    float: left;
+}
+
+ul span.drop_icon {
+    position: relative;
+    top: 10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: #979696 transparent transparent transparent;
+}
+
+ul a.level_one {
+    display: block;
+    /*將主選單超連結設置為區塊*/
+    text-align: center;
+    width: 120px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+ul a.level_one:hover {
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: #ccc;
+}
+
+div.drop_area:hover a.level_one {
+    text-align: center;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+
+/*子選單設定*/
+
+ul.sub_menu {
+    display: none;
+    border: 1px solid #ccc;
+}
+
+
+/*一開始隱藏子選單*/
+
+ul.sub_menu li {
+    float: none;
+}
+
+
+/*讓子選單不要偏移*/
+
+ul a.level_two {
+    display: block;
+    /*將子選單超連結設置為區塊*/
+    width: 120px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    transition: 0.2s;
+}
+
+div.drop_area {
+    text-align: center;
+}
+
+div.drop_area:hover ul.sub_menu {
+    text-align: center;
+    left: 10vw;
+    border-radius: 5px;
+    background-color: white;
+    display: block;
+    z-index: 100;
+}
+
+
+/*滑鼠移上去之後顯示子選單*/
+
+ul a.level_two:hover {
+    background-color: rgb(173, 207, 218);
+}
+
+
+/* 選單E */
+
+
+/* S LOGO */
+
+.nav-header {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.navimg {
+    width: 200px;
+    height: 50px;
+}
+
+.navbar-left {
+    float: left !important;
+}
+
+
+/* E LOGO */
+
+.navbar-right {
+    float: right !important;
+    margin-right: -15px;
+}
+
+
+/* navE */
+
+
+/* S searchbar */
+
+div.searchbar {
+    margin: 10px auto;
+    background-color: lightgrey;
+    border-radius: 5px;
+    width: 90vw;
+    height: 40vh;
+}
+
+
+/* searchbar E */
+
+
+/* Start資料 */
+
+div.DataList {
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+div.zoom {
+    margin: 0px 0px;
+    text-align: center;
+    align-items: center;
+    float: left;
+    height: 500px;
+    width: 300px;
+    /* border: solid 1px; */
+    overflow: hidden;
+}
+
+div.SquareCard {
+    position: relative;
+    top: 25px;
+    left: 20px;
+    height: 380px;
+    width: 200px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: solid grey;
+    transition: 0.2s;
+}
+
+div.SquareCard:hover {
+    transform: scale(1.11);
+}
+
+div.SquareCard img.SCimg {
+    height: 150px;
+    width: 200px;
+}
+
+
+/* 資料End */
+
+
+/* S SlectMovie */
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.warp {
+    border-bottom: 3px solid #ccc;
+    width: 100Vw;
+}
+
+.templates-block {
+    padding: 0px;
+    text-align: center;
+}
+
+.block-slider {
+    padding: 40px 0 20px 0;
+}
+
+.thumbnail-slider {
+    width: 94vw;
+    margin-left: 10px;
+    padding: 10px 0px;
+    border-radius: 10px;
+    background-color: honeydew;
+}
+
+
+/* slider */
+
+.slider {
+    width: auto;
+    margin: 50px auto;
+}
+
+.slick-slide {
+    margin: 0px 0px;
+}
+
+.slick-slide img {
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    padding: 1px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: 0.8;
+}
+
+.slick-active {
+    opacity: 1;
+}
+
+.slick-current {
+    opacity: 1;
+}
+
+
+/* slider */
+
+
+/* E SelectMovie */
+
+
+/* S頁尾 */
+
+footer span.Link {}
+
+footer span.Link img {
+    width: 40px;
+    height: 40px;
+}
+
+.footerul {
+    display: block;
+    height: 10vh;
+    width: 100vw;
+}
+
+.footerul li {
+    float: left;
+    margin: 10px 5vw;
+}
+
+footer span.copy {
+    position: absolute;
+    right: 15px;
+    text-align: right;
+    font-size: 16px;
+    margin-top: 3px;
+    padding: 10px;
+}
+
+
+/* 頁尾E */
+
+
+/* Start ScrollTOP */
+
+div.ScrollTOP {
+    cursor: pointer;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border: double 5pt white;
+    border-radius: 15px;
+    background-color: rgb(155, 155, 155);
+    opacity: 0.7;
+    z-index: 3;
+    animation-duration: 1s;
+}
+
+div.ScrollTOP span:nth-child(1) {
+    position: absolute;
+    background-color: yellow;
+    border-radius: 10px;
+    height: 5px;
+    width: 62.5%;
+    top: 45%;
+    transform: rotate(-45deg);
+}
+
+div.ScrollTOP span:nth-child(2) {
+    position: absolute;
+    background-color: yellow;
+    border-radius: 10px;
+    height: 5px;
+    width: 62.5%;
+    top: 45%;
+    right: 0;
+    transform: rotate(45deg);
+}
+
+
+/* End ScrollTOP */
+
+
+/* device css */
+
+@media (max-width: 600px) {
+    /* header */
+    /* ul */
+    /*主選單設定*/
+    div.mynav {
+        height: 0px;
+        transition: 0.5s;
+        width: 100vw;
+        position: absolute;
+    }
+    div.navopen {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: hsla(0, 0%, 0%, 0.500);
+        transition: 0.5s;
+    }
+    div.mynav ul.main_menu {
+        height: 0px;
+        display: none;
+    }
+    div.navopen ul.main_menu {
+        height: auto;
+        display: block;
+        background-color: whitesmoke;
+        border-top: 3px #ccc double;
+    }
+    ul.main_menu li {
+        float: none;
+    }
+    ul span.drop_icon {
+        position: relative;
+        top: 10px;
+        right: -10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: #979696 transparent transparent transparent;
+    }
+    ul a.level_one {
+        display: block;
+        /*將主選單超連結設置為區塊*/
+        text-align: center;
+        width: 100vw;
+        line-height: 40px;
+        text-decoration: none;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    ul a.level_one:hover {
+        margin-top: 5px;
+        border-radius: 5px;
+        background-color: #ccc;
+    }
+    div.drop_area:hover a.level_one {
+        background-color: #ccc;
+        border-radius: 5px;
+    }
+    /*子選單設定*/
+    ul.sub_menu {
+        display: none;
+        border: 1px solid #ccc;
+    }
+    /*一開始隱藏子選單*/
+    ul.sub_menu li {
+        float: none;
+    }
+    div.drop_area:hover ul.sub_menu {
+        position: absolute;
+    }
+    /*讓子選單不要偏移*/
+    ul a.level_two {
+        display: block;
+        /*將子選單超連結設置為區塊*/
+        width: 80vw;
+        line-height: 40px;
+        text-decoration: none;
+        text-align: center;
+        color: black;
+        transition: 0.2s;
+    }
+    /* 選單E */
+    /* S LOGO */
+    .navimg {
+        width: 200px;
+        height: 50px;
+    }
+    .navbar-left {
+        float: none !important;
+    }
+    /* E LOGO */
+    .navbar-right {
+        float: none !important;
+        margin-right: -15px;
+    }
+    /* ul */
+    .MenuIcon {
+        border-radius: 50%;
+        margin: 10px;
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+        z-index: 999;
+    }
+    .MenuIcon span {
+        display: block;
+        width: 50px;
+        height: 10px;
+        position: absolute;
+        background-color: rgb(107, 107, 107);
+        border-radius: 20px;
+        transition: 0.7s;
+    }
+    .MenuIcon span:nth-child(1) {
+        top: 0;
+    }
+    .MenuIcon span:nth-child(2) {
+        top: 15px;
+    }
+    .MenuIcon span:nth-child(3) {
+        top: 30px;
+    }
+    div.open span:nth-child(1) {
+        top: 50%;
+        transform: rotate(585deg);
+    }
+    div.open span:nth-child(2) {
+        transform: rotate(720deg);
+        opacity: 0;
+    }
+    div.open span:nth-child(3) {
+        top: 50%;
+        transform: rotate(-585deg);
+    }
+    /* 選單E */
+    /* header */
+    div.searchbar {
+        width: 85vw;
+    }
+    /* footer */
+    div.footer-top {
+        margin-left: -30px;
+    }
+    div.footer-bottom {
+        height: 10vh;
+        padding-top: 30px;
+    }
+    div.footer-bottom span.Link img {
+        width: 30px;
+        height: 30px;
+    }
+    div.footer-bottom span.copy {
+        width: 100vw;
+        text-align: center;
+        display: block;
+    }
+    /* footer */
+}
+
+
+/* device css */
