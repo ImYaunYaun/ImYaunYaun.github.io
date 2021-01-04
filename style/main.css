@@ -17,7 +17,7 @@ header {
     background-color: whitesmoke;
     position: fixed;
     top: 0px;
-    height: auto;
+    height: 55px;
     width: 100vw;
     z-index: 100;
     border-bottom: 1px solid #ccc;

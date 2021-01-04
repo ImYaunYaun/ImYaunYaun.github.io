@@ -346,7 +346,7 @@ div.ScrollTOP span:nth-child(2) {
 
 /* device css */
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     /* header */
     /* ul */
     /*主選單設定*/
@@ -398,7 +398,7 @@ div.ScrollTOP span:nth-child(2) {
         font-weight: bold;
         transition: 0.2s;
     }
-    ul a.level_one:hover {
+    /* ul a.level_one:hover {
         margin-top: 5px;
         border-radius: 5px;
         background-color: #ccc;
@@ -406,18 +406,16 @@ div.ScrollTOP span:nth-child(2) {
     div.drop_area:hover a.level_one {
         background-color: #ccc;
         border-radius: 5px;
-    }
+    } */
     /*子選單設定*/
     ul.sub_menu {
+        position: absolute;
         display: none;
         border: 1px solid #ccc;
     }
     /*一開始隱藏子選單*/
     ul.sub_menu li {
         float: none;
-    }
-    div.drop_area:hover ul.sub_menu {
-        position: absolute;
     }
     /*讓子選單不要偏移*/
     ul a.level_two {

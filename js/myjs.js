@@ -39,16 +39,17 @@ function MenuClick(myObj) {
     myObj.classList.toggle("open");
     mynav.classList.toggle("navopen");
 }
+
+
 $(document).ready(function() {
-    $('.ScrollTOP').on('click', function(e) {
-        e.preventDefault();
-        $('html,body').animate({
-            scrollTop: 0,
-        }, 700)
+    $(".ScrollTOP").on('click', function() {
+        // console.log('click');
+        //     $('html,body').scrollTop(0);
+        $("html,body").animate({ scrollTop: 0 }, 1000);
     });
-    $(window).on('scroll', function() {
+    $("body").on('scroll', function() {
         // console.log($(this).scrollTop());
-        if ($(this).scrollTop() > 2000) {
+        if ($(this).scrollTop() > 300) {
             $('.ScrollTOP').fadeIn("fast");
         } else {
             $('.ScrollTOP').stop().fadeOut("fast");
