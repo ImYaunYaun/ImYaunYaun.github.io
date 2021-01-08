@@ -60,3 +60,15 @@ footer {
     border-top: 2px solid #ccc;
     width: 100vw;
 }
+
+@media (max-width: 900px) {
+    header {
+        background-color: whitesmoke;
+        position: fixed;
+        top: 0px;
+        height: auto;
+        width: 100vw;
+        z-index: 100;
+        border-bottom: 1px solid #ccc;
+    }
+}

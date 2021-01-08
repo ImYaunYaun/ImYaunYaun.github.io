@@ -114,8 +114,7 @@ ul a.level_two:hover {
 }
 
 .navimg {
-    width: 200px;
-    height: 50px;
+    max-width: 200px;
 }
 
 .navbar-left {
@@ -137,11 +136,17 @@ ul a.level_two:hover {
 /* S searchbar */
 
 div.searchbar {
-    margin: 10px auto;
+    margin: 0px;
+    margin-left: -40px;
     background-color: lightgrey;
-    border-radius: 5px;
-    width: 90vw;
-    height: 40vh;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+div.searchbar img {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -158,12 +163,12 @@ div.DataList {
 }
 
 div.zoom {
-    margin: 0px 0px;
+    margin: 20px 0px;
     text-align: center;
     align-items: center;
     float: left;
-    height: 500px;
-    width: 300px;
+    height: 700px;
+    width: 400px;
     /* border: solid 1px; */
     overflow: hidden;
 }
@@ -171,9 +176,9 @@ div.zoom {
 div.SquareCard {
     position: relative;
     top: 25px;
-    left: 20px;
-    height: 380px;
-    width: 200px;
+    left: 30px;
+    height: 600px;
+    width: 280px;
     padding: 30px;
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
@@ -182,12 +187,12 @@ div.SquareCard {
 }
 
 div.SquareCard:hover {
-    transform: scale(1.11);
+    transform: scale(1.03);
 }
 
 div.SquareCard img.SCimg {
-    height: 150px;
-    width: 200px;
+    height: 300px;
+    width: 100%;
 }
 
 
@@ -236,8 +241,8 @@ div.SquareCard img.SCimg {
 }
 
 .slick-slide img {
-    width: 250px;
-    height: 200px;
+    width: 300px;
+    height: 450px;
     border-radius: 10px;
 }
 
@@ -308,20 +313,20 @@ div.ScrollTOP {
     cursor: pointer;
     position: fixed;
     bottom: 5px;
-    right: 15px;
+    right: 25px;
     width: 35px;
     height: 35px;
     border: double 5pt white;
-    border-radius: 15px;
-    background-color: rgb(155, 155, 155);
-    opacity: 0.7;
+    border-radius: 40px;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.9;
     z-index: 3;
     animation-duration: 1s;
 }
 
 div.ScrollTOP span:nth-child(1) {
     position: absolute;
-    background-color: yellow;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     height: 5px;
     width: 62.5%;
@@ -331,7 +336,7 @@ div.ScrollTOP span:nth-child(1) {
 
 div.ScrollTOP span:nth-child(2) {
     position: absolute;
-    background-color: yellow;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     height: 5px;
     width: 62.5%;
@@ -430,10 +435,7 @@ div.ScrollTOP span:nth-child(2) {
     }
     /* 選單E */
     /* S LOGO */
-    .navimg {
-        width: 200px;
-        height: 50px;
-    }
+    .navimg {}
     .navbar-left {
         float: none !important;
     }
@@ -485,9 +487,101 @@ div.ScrollTOP span:nth-child(2) {
         transform: rotate(-585deg);
     }
     /* 選單E */
+    /* Start資料 */
+    div.DataList {
+        margin-left: -40px;
+        height: 100%;
+        width: 100vw;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    div.zoom {
+        margin: 20px auto;
+        text-align: center;
+        align-items: center;
+        float: left;
+        height: 700px;
+        width: 100Vw;
+        /* border: solid 1px; */
+        overflow: hidden;
+    }
+    div.SquareCard {
+        position: relative;
+        height: 600px;
+        width: 70vw;
+        padding: 30px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        border: solid grey;
+        transition: 0.2s;
+    }
+    div.SquareCard:hover {
+        transform: scale(1.03);
+    }
+    div.SquareCard img.SCimg {
+        height: 300px;
+        width: 100%;
+    }
+    /* 資料End */
+    /* Sslider */
+    .row {
+        margin-left: -45px;
+        margin-right: -15px;
+    }
+    .warp {
+        border-bottom: 3px solid #ccc;
+        width: 100Vw;
+    }
+    .templates-block {
+        padding: 0px;
+        text-align: center;
+    }
+    .block-slider {
+        padding: 40px 0 20px 0;
+    }
+    .thumbnail-slider {
+        width: 100vw;
+        padding: 10px 0px;
+        border-radius: 10px;
+        background-color: honeydew;
+    }
+    /* slider */
+    .slider {
+        width: auto;
+    }
+    .slick-slide {
+        margin: 0px 0px;
+    }
+    .slick-slide img {
+        margin-left: 10%;
+        width: 80VW;
+        height: 400px;
+        border-radius: 10px;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+        display: none;
+        padding: 1px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        background-color: black;
+    }
+    .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: 0.8;
+    }
+    .slick-active {
+        opacity: 1;
+    }
+    .slick-current {
+        opacity: 1;
+    }
+    /* sliderE */
     /* header */
     div.searchbar {
-        width: 85vw;
+        width: 100vw;
+        height: 25vh;
+        margin-left: -35px;
     }
     /* footer */
     div.footer-top {
