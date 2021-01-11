@@ -64,7 +64,7 @@ $(document).ready(function() {
         var $ViewportHeight = $(window).height();
         $ScrollTop = $(this).scrollTop();
 
-        if ($BodyHeight == ($ViewportHeight + $ScrollTop) && stop <= 1) {
+        if ($BodyHeight == ($ViewportHeight + $ScrollTop) && stop <= 1 || stop == 0) {
             data = `<div class="zoom">
             <div class="SquareCard">
                 <img src="style/img/sdUhpDhm6nJq7DefhhCo-800x1143.jpg" alt="" class="SCimg">
