@@ -900,10 +900,10 @@ a:focus {
     }
     .sidebar.toggled .nav-item .nav-link {
         display: none;
-        width: 100%;
+        width: 0%;
         text-align: left;
-        padding: 1rem;
-        width: 14rem;
+        /* padding: 1rem;
+        width: 14rem; */
     }
     .sidebar.toggled .nav-item .nav-link i {
         font-size: 0.85rem;
