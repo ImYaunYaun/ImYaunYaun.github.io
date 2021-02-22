@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Nunito';
+    src: url('../font/Nunito-Regular.ttf');
+    src: url('../font/Nunito-Regular.ttf') format('ttf'), url('../font/Nunito-Regular.ttf') format('truetype');
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -35,6 +41,13 @@ a:focus {
 .container-login {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+}
+
+@media (min-width:768px) {
+    .container-login {
+        margin-left: 25rem;
+        margin-right: 25rem;
+    }
 }
 
 .scroll-to-top {
@@ -587,10 +600,9 @@ a:focus {
 }
 
 .sidebar {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    /* min-height: 100vh;
-    width: 14rpm !important; */
+    position: relative;
+    min-height: 100vh;
+    width: 14rpm !important;
     background-color: #ffffff !important;
     -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
@@ -895,20 +907,18 @@ a:focus {
         -webkit-transition: all 0.3s ease-in-out;
     }
     .sidebar.toggled .nav-item {
-        display: none;
-        /* margin-left: -1rem;
+        margin-left: -1rem;
         position: relative;
-        margin-bottom: -15px; */
+        margin-bottom: -15px;
     }
     .sidebar.toggled .nav-item .nav-link {
-        display: none;
-        width: 0%;
+        display: block;
+        width: 100%;
         text-align: left;
-        /* padding: 1rem;
-        width: 14rem; */
+        padding: 1rem;
+        width: 14rem;
     }
     .sidebar.toggled .nav-item .nav-link i {
-        display: none;
         font-size: 0.85rem;
         margin-top: 0.4rem;
         margin-right: 0.5rem;
