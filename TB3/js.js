@@ -12,7 +12,7 @@
 
     // Close any open menu accordions when window is resized below 768px
     $(window).resize(function() {
-        if ($(window).width() < 768) {
+        if ($(window).width() <= 768) {
             $('.sidebar .collapse').collapse('hide');
         };
     });
@@ -68,14 +68,8 @@ $(document).ready(function() {
     });
 });
 
-// Popover Javascript
 
-$(function() {
-    $('[data-toggle="popover"]').popover()
-});
-$('.popover-dismiss').popover({
-    trigger: 'focus'
-});
+
 
 
 // Version in Sidebar
