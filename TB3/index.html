@@ -1,0 +1,1225 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description">
+    <meta name="author">
+    <title>
+        大陸觀光團通報系統
+    </title>
+
+    <style>
+        /* 使用瀏覽器瀏覽時不顯示浮水印 */
+        
+        .watermark {
+            display: none;
+        }
+        
+        @media print {
+            .watermark {
+                display: block;
+                position: fixed;
+                opacity: 0.5;
+                margin: 0 auto;
+                z-index: 999;
+                transform: rotate(-7deg);
+                text-align: center;
+                margin-top: 600px;
+            }
+            .Noprint {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+        function showMask() {
+            $.blockUI({
+                message: '<img src="Image/Pageloading.gif" />',
+                css: {
+                    background: 'transparent',
+                    color: 'transparent',
+                    border: '1px solid transparent'
+                }
+            });
+            //$('#myMaskModal').modal('show');
+            //$('#myMaskModal').modal({
+            //    backdrop: false,
+            //    keyboard: false
+            //});
+        }
+
+        function hideMask() {
+            $.unblockUI();
+            //$('#myMaskModal').modal('hide');
+            //$('#myMaskModal').hide();
+            //$('.modal-backdrop').hide();
+            //$('.modal-backdrop').show();
+            //if (!$('#myModal').hasClass('show')) { }
+            //  $('.modal-backdrop').remove();
+        }
+
+        $(function() {
+            if (Sys.WebForms.PageRequestManager.getInstance())
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideMask);
+            hideMask();
+        });
+
+        window.onbeforeprint = function(event) {
+            getPrintNo();
+
+
+
+
+
+
+
+
+            //var strDT = "123456789-"
+            //var strNum = "001";
+            //var PRINT_NO = "WaterMark" + strDT + strNum
+            //document.getElementById("PrintNo").innerHTML = PRINT_NO;
+        };
+
+        function getPrintNo() {
+            var DKey = $("#lbDataKey").text();
+            // 取得列印流水號
+            $.ajax({
+                type: "POST",
+                dataType: "Text",
+                url: "Common/GetData.ashx?q=&mode=GetPrintNo&DKey=" + DKey,
+                //data: { name: "admin", pass: "admin" },
+                //beforeSend: function () { $("#ds").html("loading"); },
+                async: false,
+                success: function(msg) {
+                    document.getElementById("PrintNo").innerHTML = msg;
+                    //$("PrintNo").html(msg);
+                }
+            });
+            //alert(document.getElementById("PrintNo").innerHTML);
+        }
+    </script>
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+    <div class="watermark">
+        <img src="Image/Watermark.png" style="width: 100%;">
+        <span id="PrintNo" style="color:Silver;font-size:30px;"></span>
+        <span id="lbDataKey" style="display: none;"></span>
+    </div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="plLeftSide">
+
+            <ul class="navbar-nav sidebar sidebar-light accordion Noprint toggled" id="accordionSidebar">
+
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="default.aspx">
+                    <div class="sidebar-brand-icon">
+                        <img src="scheme/img/logo/logo2.png">
+                    </div>
+                    <div class="sidebar-brand-text mx-3"></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="default.aspx">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>主頁</span></a>
+                </li>
+                <!-- Menu -->
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRP2100" aria-expanded="true" aria-controls="collapseRP2100 target=" '="">
+                                  <i class="fas fa-inbox"></i>
+                                  <span>主管專區</span>
+                                </a>
+                       
+                    <div id="collapseRP2100" class="collapse" aria-labelledby="headingRP2100" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Report\RP2001.aspx?FunctionID=AgADslP4D3RQiAG0XHwNYA@@">每日入境/在臺人數、團數統計</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2101.aspx?FunctionID=AiwD7lNVD/hQBgF+XAUN1Q@@">稽查案件統計月報</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2102.aspx?FunctionID=VGkHvQBgBrxWYAN6AN0MIg@@">罰鍰逾期未繳查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2103.aspx?FunctionID=VGsHbAA0Bg9WygP4AAcMkQ@@">財產清查進度查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2104.aspx?FunctionID=VMsHIACWBoNWEgP1ABUM2A@@">債權憑證換發查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2105.aspx?FunctionID=AKsDOlDwVYkFmgE+DOYFrA@@">訴願訴訟進度查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2002.aspx?FunctionID=ACkDd1CfVTAFPAEGDO4Ftw@@">每日景點人數預報</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAP0500" aria-expanded="true" aria-controls="collapseAP0500 target=" '="">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>行程及行車軌跡</span>
+                    </a>
+
+                    <div id="collapseAP0500" class="collapse" aria-labelledby="headingAP0500" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Application\AP0510.aspx?FunctionID=UjwEvAaBBYtcVwFqCStXJA@@">自建行程及行車軌跡</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAP0100" aria-expanded="true" aria-controls="collapseAP0100 target=" '="">
+                                  <i class="fas fa-clipboard-list"></i>
+                                  <span>大陸觀光團接待/送審</span>
+                                </a>
+                       
+                    <div id="collapseAP0100" class="collapse" aria-labelledby="headingAP0100" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Application\AP0100.aspx?FunctionID=Uq0EaAbMBZ1cEwEKCdxXqg@@&amp;DisplayMode=slim" target="_blank">大陸觀光團接待/送審業務</a>
+                        
+                        <a class="collapse-item" href="Forms\Application\AP0200.aspx?FunctionID=UusEYgZ0BW1csgEGCfVX9Q@@">接待社轉團</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCQ0450" aria-expanded="true" aria-controls="collapseCQ0450 target=" '="">
+                        <i class="fas fa-plane-departure"></i>
+                        <span>入/出境通報</span>
+                    </a>
+
+                    <div id="collapseCQ0450" class="collapse" aria-labelledby="headingCQ0450" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Application\AP0301.aspx?FunctionID=V1EEgQBjBA4BGgc3DWZSNg@@">入出境通報</a>
+
+                            <a class="collapse-item" href="Forms\Application\AP0300.aspx?FunctionID=VFNWWVVeA2dc/gpZXdRRCw@@">觀光團資料</a>
+
+                            <a class="collapse-item" href="Forms\Application\AP0300.aspx?FunctionID=VMZWWVU2A0Rc1QrgXctRrw@@">入出境通報查詢</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCH0000" aria-expanded="true" aria-controls="collapseCH0000 target=" '="">
+                                  <i class="fab fa-fw fa-wpforms"></i>
+                                  <span>離團/案件通報</span>
+                                </a>
+                       
+                    <div id="collapseCH0000" class="collapse" aria-labelledby="headingCH0000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Change\CH0100.aspx?FunctionID=UVkFyAdwA4MG+VBxCAsBDg@@">離團/案件通報</a>
+                        
+                        <a class="collapse-item" href="Forms\Change\CH0102.aspx?FunctionID=UUoFCAddA0gGIFDQCPQBTw@@&amp;PageMode=submit&amp;Page=EQ0392">通報資料審核</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0218.aspx?FunctionID=UVQF3AcuAyAGRFAPCC4BsA@@">旅行社資料</a>
+                        
+                        <a class="collapse-item" href="Forms\Change\CH0102.aspx?FunctionID=U4dUEgdIU5ECN1VqCuICGg@@&amp;PageMode=query&amp;Page=EQ0391">通報資料查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP0500.aspx?FunctionID=UxtUogciU1cC71WSCskCyA@@">行程資料查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP0700.aspx?FunctionID=U3NU1Ad/U3gCwFUPCuoCyA@@">合格導遊資枓查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP0800.aspx?FunctionID=UyUFH1B5UPJT3wAuDJJSJA@@">合法飯店資料查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP0900.aspx?FunctionID=U80F31CNUBRTHQAYDGVSPQ@@">合格出租車資料查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Records\RQ0550.aspx?FunctionID=U/EFtVCGUAFT0wBEDOhSSg@@">出租車使用記錄查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Application\AP0301.aspx?FunctionID=U5ZTlAcHUq0HrQKpW+IHfw@@">團員入出境資料</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP2000.aspx?FunctionID=UxNTPQdzUkEHTgK4WzwHhg@@">遊覽車駕駛資料查詢</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAN0000" aria-expanded="true" aria-controls="collapseAN0000 target=" '="">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>行方不明、事故及通報</span>
+                    </a>
+
+                    <div id="collapseAN0000" class="collapse" aria-labelledby="headingAN0000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Announce\AN0100.aspx?FunctionID=WI8FG1aBBKQBOQCvWLgByw@@">一般報部及災害通報單</a>
+
+                            <a class="collapse-item" href="Forms\Announce\AN0102.aspx?FunctionID=WOYFM1YeBMoB5gBEWCwB0w@@">一般報部及災害通報範本</a>
+
+                            <a class="collapse-item" href="Forms\EventAnnounce\AN0200.aspx?FunctionID=WLcF+1Y6BFYBwABcWL0Bew@@">觀光團事故設定</a>
+
+                            <a class="collapse-item" href="Forms\EventAnnounce\AN0202.aspx?FunctionID=BPVReAcaVWIFdQtrCx5Qmw@@">觀光團事故查詢</a>
+
+                            <a class="collapse-item" href=".\?FunctionID=BIZRFweXVckF3wugCwdQMw@@">觀光團事故作業</a>
+
+                            <a class="collapse-item" href="Forms\EventAnnounce\AN0203.aspx?FunctionID=BBJR7Qf4VU4F0gt+C7VQvA@@">觀光團事故旅客名單查詢</a>
+
+                            <a class="collapse-item" href="Forms\ControlAnnounce\CQ0530.aspx?FunctionID=WeFWtQBdBZ5WP1AnX+FSbA@@">行方不明統計</a>
+
+                            <a class="collapse-item" href="Forms\Punish\PN0100.aspx?FunctionID=VDtTd1WDDt4BkFLrWNIE/w@@">行方不明案件</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEQ0300" aria-expanded="true" aria-controls="collapseEQ0300 target=" '="">
+                                  <i class="fas fa-fax"></i>
+                                  <span>簡訊傳真作業</span>
+                                </a>
+                       
+                    <div id="collapseEQ0300" class="collapse" aria-labelledby="headingEQ0300" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Contact\CT0201.aspx?FunctionID=A+dRtlCpVCxVpVFHXVIGyQ@@">簡訊新增</a>
+                        
+                        <a class="collapse-item" href="Forms\Contact\CT0200.aspx?FunctionID=A+xRPVCsVJ1V61EfXZUGig@@">寄出簡訊查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Contact\CT0101.aspx?FunctionID=AqUH3ly2UFxcjgrTXLMGtQ@@">傳真新增</a>
+                        
+                        <a class="collapse-item" href="Forms\Contact\CT0100.aspx?FunctionID=Ap0Hr1xrUFlcjgoZXPkGVA@@">傳真查詢</a>
+                        
+                        <a class="collapse-item" href="Forms\Report\RP1300.aspx?FunctionID=BTwEJleMBz4COga9C31SbA@@">導遊接團紀錄</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRQ0500" aria-expanded="true" aria-controls="collapseRQ0500 target=" '="">
+                        <i class="fas fa-address-card"></i>
+                        <span>組接社/導遊/出租車/飯店接團紀錄</span>
+                    </a>
+
+                    <div id="collapseRQ0500" class="collapse" aria-labelledby="headingRQ0500" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Report\RP1100.aspx?FunctionID=V9oGcFA8AI1SnVUFD6sB4Q@@">臺灣旅行社接團紀錄查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1200.aspx?FunctionID=V20GB1CyACRSbVXWDwUBow@@">大陸組團社接團紀錄查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1300.aspx?FunctionID=V2cGBlC6AC5SYlU7D2MBag@@">導遊接團紀錄查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1400.aspx?FunctionID=UPRT91d8AYxdXlIQD+QFUg@@">組接社合作對應</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1000.aspx?FunctionID=UAdTcVeCAQRdJFKxDwIF0Q@@">出租車使用紀錄</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1500.aspx?FunctionID=UBVTZFeQAQ1d4FK1D7EFmQ@@">飯店住宿紀錄</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP0600.aspx?FunctionID=AMAC7QcXVatRfAdJWLYAoA@@">行程資料</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1800.aspx?FunctionID=ANACKwdfVcJRRQc6WBUALg@@">旅客清單查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1900.aspx?FunctionID=AOACKwd3VS5RCAeCWCsAyg@@">重疊駕駛查詢</a>
+
+                            <a class="collapse-item" href="Forms\FQ0170.aspx?FunctionID=WYdVLFXmAeVXmwTMDPFSFg@@">品質指數分析</a>
+
+                            <a class="collapse-item" href="Forms\Records\RQ0820.aspx?FunctionID=WRBVsFWeAXFXCwSYDNpSmA@@">遊纜車評鑑資料</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFQ0550" aria-expanded="true" aria-controls="collapseFQ0550 target=" '="">
+                                  <i class="fas fa-star-half-alt"></i>
+                                  <span>品質指數分析</span>
+                                </a>
+                       </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFQ0151" aria-expanded="true" aria-controls="collapseFQ0151 target=" '="">
+                        <i class="fas fa-bus"></i>
+                        <span>具接待資格業者名單</span>
+                    </a>
+
+                    <div id="collapseFQ0151" class="collapse" aria-labelledby="headingFQ0151" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Report\RP1600.aspx?FunctionID=BFpSKFbHAghQqgYdX6cNtQ@@">具接待資格</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP1700.aspx?FunctionID=V2QHwlFdAx5TTQD2DHVWVA@@">尚未繳納保證金</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePA0100" aria-expanded="true" aria-controls="collapsePA0100 target=" '="">
+                                  <i class="fas fa-exclamation-triangle"></i>
+                                  <span>查處案件追蹤管理</span>
+                                </a>
+                       
+                    <div id="collapsePA0100" class="collapse" aria-labelledby="headingPA0100" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Punish\PN0200.aspx?FunctionID=WH4AQwY0BC1QYVBuDPdSsQ@@">查核查處案件查詢</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRQ0700" aria-expanded="true" aria-controls="collapseRQ0700 target=" '="">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>大陸統計報表</span>
+                    </a>
+
+                    <div id="collapseRQ0700" class="collapse" aria-labelledby="headingRQ0700" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Report\RP0100.aspx?FunctionID=AAYAw1YlBIYHCQRqWjgASg@@">日報</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP0200.aspx?FunctionID=AKQAhVYcBOgHhgRLWh4Axg@@">週報</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP0300.aspx?FunctionID=ADkAD1bpBAAHLgSwWgwA5Q@@">月報</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP0400.aspx?FunctionID=U2FUklXlVLEFmws4DblW1w@@">年報</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2003.aspx?FunctionID=UzlURlVJVKIFmgvhDU1Wog@@">事故人數查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2200.aspx?FunctionID=Uy1USFXTVFIF8gvnDUlWLA@@">每日入境人次查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2202.aspx?FunctionID=U7hUiFUrVH8FQQsFDRZWKg@@">超額訂房查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2203.aspx?FunctionID=VzAA1FGoAXhQPAAJCzcBmA@@">每月出境團體</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2204.aspx?FunctionID=VwMAw1HcAX1QnQALC2oBNQ@@">第1類團體購物站</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2205.aspx?FunctionID=VgNUrlB7UrtRjgDXX70HIg@@">觀光團行程區域</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2201.aspx?FunctionID=BO8C11yCDgsGAQVyCFdWYQ@@">住宿飯店單日最高天數及人次查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2206.aspx?FunctionID=BLoCUVynDnQGigWLCPFWcA@@">住宿人次及團次統計</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2207.aspx?FunctionID=Vf0GKQa8DioHWgR+DC4GZQ@@">行程安排購物站數查詢</a>
+
+                            <a class="collapse-item" href="Forms\Report\RP2208.aspx?FunctionID=BU9W0QTOBxgF5wIuC8lV+Q@@">行程檢核結果查詢</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFQ0750" aria-expanded="true" aria-controls="collapseFQ0750 target=" '="">
+                                  <i class="far fa-fw fa-window-maximize"></i>
+                                  <span>聯絡人資料</span>
+                                </a>
+                       
+                    <div id="collapseFQ0750" class="collapse" aria-labelledby="headingFQ0750" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Contact\CT0300.aspx?FunctionID=A9IARQB6D21Q3wIgXPoDsg@@">機關聯絡人</a>
+                        
+                        <a class="collapse-item" href="Forms\Contact\CT0400.aspx?FunctionID=A3QAcwCGDy9QDwIYXEgDTA@@">機關聯絡人群組</a>
+                        
+                        <a class="collapse-item" href="Forms\Contact\CT0301.aspx?FunctionID=A+MAOABJD9JQnQLmXEkDdw@@">接待社緊急聯絡人查詢</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSM0800" aria-expanded="true" aria-controls="collapseSM0800 target=" '="">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>品質指數與獎勵配額設定</span>
+                    </a>
+
+                    <div id="collapseSM0800" class="collapse" aria-labelledby="headingSM0800" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\SystemManagement\SM0810.aspx?FunctionID=AgFUXQPZBxkGugeKCNhQLA@@">指數設定</a>
+
+                            <a class="collapse-item" href="Forms\SystemManagement\SM0820.aspx?FunctionID=AmBUlAPEB3MGwwerCH1QuA@@">獎勵配額設定</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBM0900" aria-expanded="true" aria-controls="collapseBM0900 target=" '="">
+                                  <i class="fas fa-database"></i>
+                                  <span>基本資料維護</span>
+                                </a>
+                       
+                    <div id="collapseBM0900" class="collapse" aria-labelledby="headingBM0900" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Basic\BA0201.aspx?FunctionID=U3UCVgBDDuZRugpnDGwABQ@@">公告訊息維護</a>
+                        
+                        <a class="collapse-item" href="Forms\News\NQ0300.aspx?FunctionID=U6gCTwB5DjhR2wqUDMUApg@@">天氣特報</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0202.aspx?FunctionID=VAtWpwFYAw5RnQDNCfIM2w@@">機場、港口主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0203.aspx?FunctionID=VG5WBAFbA/hRBQAACUoM/A@@">縣市主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0204.aspx?FunctionID=VFRWoQHtA+1RtgBbCQ4MgA@@">鄉鎮市區主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0205.aspx?FunctionID=B68FKlYBVVFW9gO+WGkBqQ@@">班機主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0206.aspx?FunctionID=BxEFz1bBVUJW4gOyWEgBlQ@@">航空公司</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0207.aspx?FunctionID=B8YFllYcVS9WZgNvWPQBLA@@">國內旅遊景點主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0208.aspx?FunctionID=U21SXQNwD9xRdlXkDAMN4A@@">國內旅遊類別主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\SystemManagement\Basic\BM0932.aspx?FunctionID=U/VSzwMgD8RRz1WFDPoNZw@@">國際活動行事曆主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0209.aspx?FunctionID=U7FSxwPLD/9RiFWFDE4N/A@@">衛生條件不合格餐廳主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0210.aspx?FunctionID=UDQIVFcNUCAABVE9DSxSRw@@">品保購物商店主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0215.aspx?FunctionID=UIAIMVcOUP8ASlG7DfBS/Q@@">遊覽車駕駛資料維護</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0211.aspx?FunctionID=UK8IPlfTUFsA0lGmDb1Sqg@@">大陸省市主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0212.aspx?FunctionID=BFIAKFCXAaRWKQP2WMNVZg@@">大陸機場、港口主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0221.aspx?FunctionID=BPkAXlCFAUlWPgO7WGVVsA@@">大陸組團社主檔</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0214.aspx?FunctionID=VBtVLlK9VJlcHQE7ChsCAg@@">合格出租車資料維護</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0216.aspx?FunctionID=VKZVfVI0VGBc+gHrCjECJQ@@">合法旅宿資料維護</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0217.aspx?FunctionID=A1wI4gORA3QHmQriCy0AEw@@">住宿黑名單登錄</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0218.aspx?FunctionID=A04IewMFA3wHbAoJC6oAZg@@">臺灣接待旅行社主檔維護</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0219.aspx?FunctionID=U6AAalDOAmAFiQBtW6IFlA@@">合法導遊、領隊基本資料維護</a>
+                        
+                        <a class="collapse-item" href="Forms\Basic\BA0220.aspx?FunctionID=U3sAOlB7AkEFugDNW/QF0w@@">遊覽車公司評鑑資料維護</a>
+                        
+                        <a class="collapse-item" href="Forms\SystemManagement\Basic\BM0320.aspx?FunctionID=UwIArVDbApMFvACcW5YFWg@@">旅宿管理作業</a>
+                        
+                        <a class="collapse-item" href="Forms\SystemManagement\Basic\BM0325.aspx?FunctionID=VHhTQ1UzBcUA5FXrCvxXOg@@">查處案件資料</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAM1000" aria-expanded="true" aria-controls="collapseAM1000 target=" '="">
+                        <i class="fas fa-cog"></i>
+                        <span>系統管理</span>
+                    </a>
+
+                    <div id="collapseAM1000" class="collapse" aria-labelledby="headingAM1000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Admin\AM1010.aspx?FunctionID=VOVT+FVpBRYAYFUBCo5X8Q@@">機關維護</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM1020.aspx?FunctionID=WO5ThlxNVI5TrQWPXNkH7g@@">帳號維護</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM0200.aspx?FunctionID=B44IYAQvD3pUbFLSCA4B6w@@">介接狀態監控</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM2100.aspx?FunctionID=VgMDSwRiU8UHyQQyC19SqQ@@">觀光團檢核參數管理</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM1030.aspx?FunctionID=VmsDCwSnUx8HJgQIC8tSEg@@">角色維護</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM1040.aspx?FunctionID=UHdSvFATD1VVsgW7AGcHpg@@">角色權限維護</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM1050.aspx?FunctionID=VtoE7Fw1AYdS+wAgCIdVPg@@">角色帳號維護</a>
+
+                            <a class="collapse-item" href="Forms\Admin\AM1060.aspx?FunctionID=VpgESFxHAfBSewABCDhV+w@@">安控稽核報表</a>
+
+                            <a class="collapse-item" href="Forms\Basic\BA2100.aspx?FunctionID=AFcBq1RCDiEHvQNpALICcA@@">參數維護</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSY0100" aria-expanded="true" aria-controls="collapseSY0100 target=" '="">
+                                  <i class="far fa-fw fa-window-maximize"></i>
+                                  <span>系統工具</span>
+                                </a>
+                       
+                    <div id="collapseSY0100" class="collapse" aria-labelledby="headingSY0100" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\Tools\SysTool.aspx?FunctionID=AJgBS1TMDpsHegMKAD8C7w@@&amp;DisplayMode=slim" target="_blank">資料庫工具</a>
+                        
+                        <a class="collapse-item" href="Forms\Tools\WcfTest.aspx?FunctionID=VN4GXwFdVF9W8wpPCHIGVw@@&amp;DisplayMode=slim" target="_blank">介接工具</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRA0810" aria-expanded="true" aria-controls="collapseRA0810 target=" '="">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>原住民部落與高端團</span>
+                    </a>
+
+                    <div id="collapseRA0810" class="collapse" aria-labelledby="headingRA0810" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href="Forms\Reward\RW0100.aspx?FunctionID=VHQG2AGTVHpWqwp5CPQGcA@@">申請案件明細</a>
+
+                            <a class="collapse-item" href="Forms\Reward\RW0101.aspx?FunctionID=WFkBcldyUtVRpwNhACgM1w@@">原民/高端/直航/獎勵專案建檔</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAP1000" aria-expanded="true" aria-controls="collapseAP1000 target=" '="">
+                                  <i class="fas fa-book"></i>
+                                  <span>操作手冊下載</span>
+                                </a>
+                       
+                    <div id="collapseAP1000" class="collapse" aria-labelledby="headingAP1000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="2rd10104.pdf?FunctionID=WDMBqFftUiVRbwPoAHkM+g@@">操作手冊下載</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAP2000" aria-expanded="true" aria-controls="collapseAP2000 target=" '="">
+                        <i class="fas fa-user-tie"></i>
+                        <span>大陸組團社名單</span>
+                    </a>
+
+                    <div id="collapseAP2000" class="collapse" aria-labelledby="headingAP2000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="collapse-item" href=".\?FunctionID=VSoAm1xiVZpUGlAdCWYAsQ@@">大陸組團社名單</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTS1000" aria-expanded="true" aria-controls="collapseTS1000 target=" '="">
+                                  <i class="far fa-fw fa-window-maximize"></i>
+                                  <span>UI設計</span>
+                                </a>
+                       
+                    <div id="collapseTS1000" class="collapse" aria-labelledby="headingTS1000" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                
+                        <a class="collapse-item" href="Forms\RWD\RwdForm.aspx?FunctionID=VWNSfwOjDlkHi1GrWCNSrg@@">RwdForm</a>
+                        
+                        <a class="collapse-item" href="Forms\RWD\RwdTable.aspx?FunctionID=VbdSMgPhDtkHYFGUWNxS7g@@">RwdTable</a>
+                        
+                        <a class="collapse-item" href="Forms\RWD\GridviewTest.aspx?FunctionID=VTxShQOkDmQHVVHNWHtSFg@@">GridviewTest</a>
+                        
+                        <a class="collapse-item" href="Forms\Application\AQ0410.aspx?FunctionID=VbxSFAN7DvYHK1HEWN5SXg@@">空白</a>
+                        
+                        <a class="collapse-item" href="Forms\Records\RQ0590.aspx?FunctionID=V+oAggP8VA5SOAEzCp4CYQ@@">空白</a>
+                        
+                        <a class="collapse-item" href="Forms\EventAnnounce\EQ0440.aspx?FunctionID=V0MAxwN6VChSogFeCpsChw@@">空白</a>
+                        
+                        <a class="collapse-item" href="Forms\Records\RQ0610.aspx?FunctionID=A6wGBFbNA8gBOlECW6dRpQ@@">空白</a>
+                        
+                        </div>
+                    </div>
+</li>
+
+
+                <hr class="sidebar-divider">
+                <div class="version" id="version-ruangadmin">V0.0.1</div>
+
+            </ul>
+        
+</div>
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div id="plTopSide">
+	
+                    <!-- TopBar -->
+                    <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+                        <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <h2 id="SystemName" class="text-white">大陸觀光團通報系統</h2>
+                        <ul class="navbar-nav ml-auto">
+                            <!-- 小提示 -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <span class="badge badge-danger badge-counter">
+                                        99</span>
+                                </a>
+
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">Alerts Center
+                                    </h6>
+
+                                    
+                                    <div id="plChange">
+		
+                                        <a class="dropdown-item d-flex align-items-center" href="Forms/Change/CH0102.aspx">
+                                            <div class="mr-3">
+                                                <div class="icon-circle bg-primary">
+                                                    <i class="fas fa-file-alt text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-gray-800">離團案件待審查</div>
+                                                <span class="font-weight-bold">
+                                                    34筆</span>
+                                            </div>
+                                        </a>
+                                    
+	</div>
+
+                                    
+                                    <div id="plPunish">
+		
+                                        <a class="dropdown-item d-flex align-items-center" href="Forms/Punish/PN0200.aspx">
+                                            <div class="mr-3">
+                                                <div class="icon-circle bg-warning">
+                                                    <i class="fa fa-cube text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-gray-800">查處案件罰鍰金額逾期繳交案件數</div>
+                                                <span class="font-weight-bold">
+                                                    62筆</span>
+                                            </div>
+                                        </a>
+                                    
+	</div>
+
+                                    
+
+                                    
+
+                                    
+                                    <div id="plExternal">
+		
+                                        <a class="dropdown-item d-flex align-items-center" href="Forms/Admin/AM0200.aspx">
+                                            <div class="mr-3">
+                                                <div class="icon-circle bg-success">
+                                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-gray-800">本日系統介接異常</div>
+                                                <span class="font-weight-bold">
+                                                    3筆</span>
+                                            </div>
+                                        </a>
+                                    
+	</div>
+                                    
+                                </div>
+                            </li>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <!-- 登入者資料 -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="img-profile rounded-circle" src="scheme/img/boy.png" style="max-width: 60px">
+                                    <span class="ml-2 d-none d-lg-inline text-white small">
+                                        <span id="lbUser">陸客遊</span>(<span id="lbEmail"></span>)</span>
+                                </a>
+                                
+                            </li>
+                            <!-- 變更密碼 -->
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link" href="Forms/Admin/AM0100.aspx?Type=self" id="AM0100" role="button">
+                                    <i class="fas fa-key fa-lg fa-fw mr-2 text-white"></i>
+                                    <span class="ml-2 d-none d-lg-inline text-white small">變更密碼</span>
+                                </a>
+                            </li>
+                            <!-- 登出 -->
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link" href="Logout.aspx" id="logoutDropdown" role="button">
+                                    <i class="fas fa-sign-out-alt fa-lg fa-fw mr-2 text-white"></i>
+                                    <span class="ml-2 d-none d-lg-inline text-white small">登出</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- Topbar -->
+                
+</div>
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <span id="lbHeader"></span>
+                    </div>
+                    <form method="post" action="./default" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var theForm = document.forms[' form1 '];
+    if (!theForm) {
+        theForm = document.form1;
+    }
+    function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+        }
+    }
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZCB9Ckccp9iCFhd18B8ybW-G32yTCS124Lio5MiTxFtMh5CIRA2&amp;t=637322205772739184" type="text/javascript"></script>
+
+
+<script src="Scripts/WebForms/MsAjax/MicrosoftAjax.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    if (typeof (Sys) === ' undefined ') throw new Error(' ASP.NET Ajax 用戶端架構無法載入。 ');
+//]]>
+</script>
+
+<script src="Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            Sys.WebForms.PageRequestManager._initialize(' ctl00$ScriptManager1 ', ' form1 ', [' tctl00$plAlertModal ', ' plAlertModal '], [], [], 90, ' ctl00 ');
+//]]>
+                        </script>
+
+                        <!-- PagePlaceHolder -->
+                        <div>
+                            
+
+    <div class="row">
+        <div class="col-xl-6" title="col1">
+            <div class="row mb-3">
+                <div class="col-xl-12 mb-4">
+                    <!-- Area 公告訊息 -->
+                    <div class="card">
+                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-light">公告訊息</h6>
+                        </div>
+                        <div>
+                            <div class="customer-message align-items-center" style="padding: 0px;">
+                                
+
+
+<div class="card mb-4">
+    <div class="col-12">
+        
+
+        <!--外加 controller -->
+        <div id="ContentPlaceHolder1_uTblList_pnlLockable">
+	
+        
+        
+</div>
+
+        <div class="table-responsive p-3">
+            
+            <div>
+	<table class="table align-items-center table-flush table-hover" cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_uTblList_gvList" style="border-style:None;border-collapse:collapse;">
+		<tbody><tr class="thead-light">
+			<th scope="col" style="width:100px;">公告日期</th><th scope="col" style="width:400px;">訊息</th>
+		</tr><tr>
+			<td>2020/09/01</td><td>ABCDEFG</td>
+		</tr><tr>
+			<td>2020/08/30</td><td>AAAS</td>
+		</tr><tr>
+			<td>2020/08/30</td><td>ABCDEFG</td>
+		</tr><tr>
+			<td>2020/02/06</td><td>!@#$%^&amp;*();http://www.cwb.gov.tw/rss/W_index.php</td>
+		</tr><tr>
+			<td>2020/02/06</td><td>請把網址放在最後面http://localhost:4196/Forms/Basic/BA0201?FunctionID=BJEH5laiB84Ayle3WscFKA@@</td>
+		</tr>
+	</tbody></table>
+</div>
+            
+        </div>
+
+
+    </div>
+</div>
+
+                            </div>
+                            <div class="card-footer text-center">
+                                <a id="ContentPlaceHolder1_lnk_News" class="m-0 small text-primary card-link" href="javascript:__doPostBack(' ctl00$ContentPlaceHolder1$lnk_News ',' ')">View More <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                
+                <div class="col-xl-12 mb-4">
+                    <!-- Area 天氣預報 -->
+                    <div class="card">
+                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-light">天氣預報</h6>
+                        </div>
+                        <div class="customer-message align-items-center" style="padding: 0px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col">
+                                        
+
+<div class="col-md-12">
+    <div class="form-group row">
+        <div id="ContentPlaceHolder1_qDdlAREA_plFieldTitle" class="col-sm-3 col-form-label text-small">
+	
+            
+            <span id="ContentPlaceHolder1_qDdlAREA_lbTitle">區域</span>
+            
+            
+        
+</div>
+        <div class="col-sm-9">
+            <select name="ctl00$ContentPlaceHolder1$qDdlAREA$ddlSelect" onchange="javascript:setTimeout(' __doPostBack(\ 'ctl00$ContentPlaceHolder1$qDdlAREA$ddlSelect\' ,\ '\' ) ', 0)" id="ContentPlaceHolder1_qDdlAREA_ddlSelect" class="form-control form-control-sm">
+	<option selected="selected" value="N">北部</option>
+	<option value="M">中部</option>
+	<option value="S">南部</option>
+	<option value="E">東部</option>
+	<option value="I">離島</option>
+
+</select>
+            <span id="ContentPlaceHolder1_qDdlAREA_lbFootNote" class="form-text" style="color:Red;"></span>
+        </div>
+    </div>
+</div>
+
+                                    </div>
+                                    <div>
+                                        <table class="MainTable" style="width: 100%">
+                                            <tbody><tr>
+                                                <td style="text-align: right;">
+                                                    <span style="font-size: 10pt;">更新資訊：於每日05、11、17、23整點更新</span>&nbsp;&nbsp;
+                                                    <span style="font-size: 10pt;">最近更新時間：<span id="ContentPlaceHolder1_lblUpdatTime">2013/03/12 17:02</span></span>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                    <div class="table-responsive p-3">
+                                        
+                                        <table class="table align-items-center table-flush dataTable" id="dataTable" width="100%" cellspacing="0">
+                                            <tbody>
+                                                <tr class="thead-light">
+                                                    <th></th>
+                                                    <th>今天白天</th>
+                                                    <th>今晩明晨</th>
+                                                    <th>明天白天</th>
+                                                </tr>
+                                                
+                                                        <tr class="宜蘭縣">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                宜蘭縣
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰短暫陣雨或雷雨" src="../../Image/W/N16.gif"><br>
+                                                                24~27°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰短暫陣雨或雷雨" src="../../Image/W/W16.gif"><br>
+                                                                24~30°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰時多雲短暫陣雨或雷雨" src="../../Image/W/N17.gif"><br>
+                                                                23~27°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                        <tr class="基隆市">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                基隆市
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰時多雲短暫陣雨或雷雨" src="../../Image/W/N17.gif"><br>
+                                                                25~27°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/W18.gif"><br>
+                                                                25~28°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/N18.gif"><br>
+                                                                25~27°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                        <tr class="新北市">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                新北市
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰" src="../../Image/W/N5.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰時多雲短暫陣雨或雷雨" src="../../Image/W/W17.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/N18.gif"><br>
+                                                                25~27°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                        <tr class="新竹市">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                新竹市
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰" src="../../Image/W/N5.gif"><br>
+                                                                25~28°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰時多雲短暫陣雨或雷雨" src="../../Image/W/W17.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/N18.gif"><br>
+                                                                26~28°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                        <tr class="新竹縣">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                新竹縣
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰" src="../../Image/W/N5.gif"><br>
+                                                                25~28°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/W18.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/N18.gif"><br>
+                                                                26~28°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                        <tr class="臺北市">
+                                                            <td style="text-align: center;vertical-align: middle;">
+                                                                臺北市
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰" src="../../Image/W/N5.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="多雲時陰短暫陣雨或雷雨" src="../../Image/W/W16.gif"><br>
+                                                                25~29°C
+                                                            </td>
+                                                            <td class="td_center">
+                                                                <img alt="陰短暫陣雨或雷雨" src="../../Image/W/N18.gif"><br>
+                                                                24~27°C
+                                                            </td>
+                                                        </tr>
+                                                    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a id="ContentPlaceHolder1_lnk_Weather" class="m-0 small text-primary card-link" href="javascript:__doPostBack(' ctl00$ContentPlaceHolder1$lnk_Weather ',' ')">View More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="col-xl-6" title="col2">
+            <div class="row mb-3">
+                <div class="col-xl-12 mb-4">
+                    <!-- Area 景點人數預報 -->
+                    <div class="card">
+                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-light">景點人數預報</h6>
+                        </div>
+                        <div class="customer-message align-items-center" style="padding: 0px;">
+                            <img id="ContentPlaceHolder1_Image2" src="Image/taiwan-01.jpg" align="middle" style="width:550px;">
+                            <span id="ContentPlaceHolder1_lbl73" class="TextFont10_left" style="z-index: 1; left: 378px; position: absolute; top: 74px">野柳</span>
+                            <span id="ContentPlaceHolder1_lblTourCount73" class="TextFont10_left" style="z-index: 1; left: 410px; position: absolute; top: 82px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount73" class="TextFont10_left" style="z-index: 1; left: 410px; position: absolute; top: 66px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl133" class="TextFont10_left" style="z-index: 1; left: 409px; position: absolute; top: 120px">故宮博物院</span>
+                            <span id="ContentPlaceHolder1_lblTourCount133" class="TextFont10_left" style="z-index: 1; left: 480px; position: absolute; top: 130px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount133" class="TextFont10_left" style="z-index: 1; left: 480px; position: absolute; top: 115px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl242" class="TextFont10_left" style="z-index: 1; left: 415px; position: absolute; top: 158px;">臺北101</span>
+                            <span id="ContentPlaceHolder1_lblTourCount242" class="TextFont10_left" style="z-index: 1; left: 476px; position: absolute; top: 156px; height: 11px;">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount242" class="TextFont10_left" style="z-index: 1; left: 665px; position: absolute; top: 222px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl142" class="TextFont10_left" style="z-index: 1; left: 410px; position: absolute; top: 192px">士林夜市</span>
+                            <span id="ContentPlaceHolder1_lblTourCount142" class="TextFont10_left" style="z-index: 1; left: 471px; position: absolute; top: 201px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount142" class="TextFont10_left" style="z-index: 1; left: 471px; position: absolute; top: 184px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl115" class="TextFont10_left" style="z-index: 1; left: 377px; position: absolute; top: 244px">太魯閣</span>
+                            <span id="ContentPlaceHolder1_lblTourCount115" class="TextFont10_left" style="z-index: 1; left: 426px; position: absolute; top: 253px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount115" class="TextFont10_left" style="z-index: 1; left: 426px; position: absolute; top: 236px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl224" class="TextFont10_left" style="z-index: 1; left: 337px; position: absolute; top: 385px">墾丁</span>
+                            <span id="ContentPlaceHolder1_lblTourCount224" class="TextFont10_left" style="z-index: 1; left: 371px; position: absolute; top: 394px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount224" class="TextFont10_left" style="z-index: 1; left: 371px; position: absolute; top: 377px">人數: 0</span>
+                            
+                            <span id="ContentPlaceHolder1_lblTourCount126" class="TextFont10_left" style="z-index: 1; left: 110px; position: absolute; top: 148px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount126" class="TextFont10_left" style="z-index: 1; left: 110px; position: absolute; top: 131px">人數: 0</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            <span id="ContentPlaceHolder1_lbl53" class="TextFont10_left" style="z-index: 1; left: 153px; position: absolute; top: 186px">日月潭</span>
+                            <span id="ContentPlaceHolder1_lblTourCount53" class="TextFont10_left" style="z-index: 1; left: 203px; position: absolute; top: 193px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount53" class="TextFont10_left" style="z-index: 1; left: 203px; position: absolute; top: 178px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl284" class="TextFont10_left" style="z-index: 1; left: 144px; position: absolute; top: 223px">中臺禪寺</span>
+                            <span id="ContentPlaceHolder1_lblTourCount284" class="TextFont10_left" style="z-index: 1; left: 208px; position: absolute; top: 233px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount284" class="TextFont10_left" style="z-index: 1; left: 208px; position: absolute; top: 216px">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl233" class="TextFont10_left" style="z-index: 1; left: 117px; position: absolute; top: 288px">阿里山</span>
+                            <span id="ContentPlaceHolder1_lblTourCount223" class="TextFont10_left" style="z-index: 1; left: 167px; position: absolute; top: 297px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount223" class="TextFont10_left" style="z-index: 1; left: 167px; position: absolute; top: 280px; bottom: 356px;">人數: 0</span>
+                            <span id="ContentPlaceHolder1_lbl273" class="TextFont10_left" style="z-index: 1; left: 131px; position: absolute; top: 360px">西子灣</span>
+                            <span id="ContentPlaceHolder1_lblTourCount273" class="TextFont10_left" style="z-index: 1; left: 180px; position: absolute; top: 370px">團數: 0</span>
+                            <span id="ContentPlaceHolder1_lblPeopleCount273" class="TextFont10_left" style="z-index: 1; left: 180px; position: absolute; top: 353px">人數: 0</span>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a id="ContentPlaceHolder1_lnk_Attractions" class="m-0 small text-primary card-link" href="javascript:__doPostBack(' ctl00$ContentPlaceHolder1$lnk_Attractions ',' ')">View More <i class="fas fa-chevron-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="col-xl-12 mb-4">
+                    <!-- Area 即時路況 -->
+                    <div class="card">
+                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-light">即時路況</h6>
+                        </div>
+                        
+
+
+<div class="card mb-4">
+    <div class="col-12">
+        
+
+        <!--外加 controller -->
+        <div id="ContentPlaceHolder1_uTblList2_pnlLockable">
+	
+        
+        
+</div>
+
+        <div class="table-responsive p-3">
+            
+            <div>
+	<table class="table align-items-center table-flush table-hover" cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_uTblList2_gvList" style="border-style:None;border-collapse:collapse;">
+		<tbody><tr class="thead-light">
+			<th scope="col" style="width:160px;">發生時間</th><th scope="col" style="width:100px;">類別</th><th scope="col" style="width:300px;">路況內容</th><th scope="col" style="width:100px;">區域</th><th scope="col" style="width:100px;">路段</th>
+		</tr><tr>
+			<td>2004/7/2 上午 12:00:00</td><td>&nbsp;</td><td>台8線37k+500～62k上谷關至德基路段，屬中橫便道上線，因93年敏督利颱風影響，道路中斷至今，未列入省道復建範圍，目前雙向封閉，人車禁止通行。</td><td>&nbsp;</td><td>台8線37K+500~62K+0</td>
+		</tr>
+	</tbody></table>
+</div>
+            
+        </div>
+
+
+    </div>
+</div>
+
+                        <div class="customer-message align-items-center">
+                        </div>
+                        <div class="card-footer text-center">
+                            <a id="ContentPlaceHolder1_lnk_Road" class="m-0 small text-primary card-link" href="javascript:__doPostBack(' ctl00$ContentPlaceHolder1$lnk_Road ',' ')">View More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                        </div>
+
+                        <!-- Modal Alert-->
+
+                        <div id="plAlertModal">
+	
+                                <div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    提示
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    MSG
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" name="ctl00$btnModalConfirm" value="確定" id="btnModalConfirm" class="btn btn-primary">
+                                                <input type="submit" name="ctl00$btnModalClose" value="取消" id="btnModalClose" class="btn btn-outline-primary mb-1" data-dismiss="modal">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+</div>
+
+                        
+ 
+
+</form>
+
+                    <!--Row-->
+
+                    
+                </div>
+                <!---Container Fluid-->
+            </div>
+            <!-- Footer -->
+            
+            <!-- Footer -->
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top" style="display: none;">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+    
+    
+
+    
+    <script src="js.js"></script>
+
+
+
+
+
+</body></html>
