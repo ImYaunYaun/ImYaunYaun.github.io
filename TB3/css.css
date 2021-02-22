@@ -894,9 +894,10 @@ a:focus {
         -webkit-transition: all 0.3s ease-in-out;
     }
     .sidebar.toggled .nav-item {
-        margin-left: -1rem;
+        display: none;
+        /* margin-left: -1rem;
         position: relative;
-        margin-bottom: -15px;
+        margin-bottom: -15px; */
     }
     .sidebar.toggled .nav-item .nav-link {
         display: none;
@@ -906,6 +907,7 @@ a:focus {
         width: 14rem; */
     }
     .sidebar.toggled .nav-item .nav-link i {
+        display: none;
         font-size: 0.85rem;
         margin-top: 0.4rem;
         margin-right: 0.5rem;
