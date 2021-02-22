@@ -898,12 +898,9 @@ a:focus {
         transition: all 0.3s ease-in-out;
         -webkit-transition: all 0.3s ease-in-out;
     }
-    .sidebar.toggled ul {
-        display: none
-    }
     .sidebar.toggled .nav-item {
         margin-left: -1rem;
-        position: relative;
+        position: absolute;
         margin-bottom: -15px;
     }
     .sidebar.toggled .nav-item .nav-link {
@@ -1023,6 +1020,7 @@ a:focus {
         display: inline;
     }
     .sidebar {
+        position: relative;
         width: 60vw !important;
         overflow: hidden;
         transition: all 0.3s ease;
