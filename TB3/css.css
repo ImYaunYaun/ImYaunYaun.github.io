@@ -37,12 +37,7 @@ a:focus {
     padding-right: 1.5rem;
 }
 
-@media (min-width:768px) {
-    .container-login {
-        margin-left: 25rem;
-        margin-right: 25rem;
-    }
-}
+@media (min-width:768px) {}
 
 .scroll-to-top {
     position: fixed;
